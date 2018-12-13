@@ -1,0 +1,5 @@
+com/services/DirectPayment_services.class
+com/services/Subscription_services.class
+com/services/catalog_services.class
+com/services/salesChannels_services.class
+com/services/product_sercices.class
