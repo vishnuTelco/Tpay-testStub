@@ -11,34 +11,77 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-@Path("/subscrition/")
+@Path("/Subscription/")
 public class Subscription_services {
+	
+	String response = "{\"operationStatusCode\":0,\"subscriptionContractId\":340510,\"paymentTransactionStatusCode\":-1,\"transactionId\":null,\"nextPaymentDate\":\"2017-06-21 16:18:42Z\",\"errorMessage\":null,\"subscriptionContractStatus\":1}";
 
 	@POST
-	@Path("/addSubscritionContract")
+	@Path("/addSubscriptionContract")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addSubscritionContract(InputStream incomingData) {
+	public Response addSubscriptionContract(InputStream incomingData) {
 		StringBuilder tpayStringBuilder = new StringBuilder();
 		try {
 			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
 			String line = null;
 			while ((line = in.readLine()) != null) {
-				tpayStringBuilder.append(line);
+				tpayStringBuilder.append(response);
 			}
-			
+
 //			System.out.println(tpayStringBuilder);
 		} catch (Exception e) {
 			System.out.println("Error parsing :- " + e);
 			// TODO: handle exception
-		}		
+		}
 		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
 	}
-	
+
 
 	@POST
-	@Path("/stopSubscritionContractbySP")
+	@Path("/stopSubscriptionContractbySP")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response stopSubscritionContractbySP(InputStream incomingData) {
+	public Response stopSubscriptionContractbySP(InputStream incomingData) {
+		StringBuilder tpayStringBuilder = new StringBuilder();
+		try {
+			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				tpayStringBuilder.append(line);
+			}
+
+//			System.out.println(tpayStringBuilder);
+		} catch (Exception e) {
+			System.out.println("Error parsing :- " + e);
+			// TODO: handle exception
+		}
+		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
+	}
+
+
+	@POST
+	@Path("/recurringSubscriptionContractbySP")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response recurringSubscriptionContractbySP(InputStream incomingData) {
+		StringBuilder tpayStringBuilder = new StringBuilder();
+		try {
+			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				tpayStringBuilder.append(line);
+			}
+
+//			System.out.println(tpayStringBuilder);
+		} catch (Exception e) {
+			System.out.println("Error parsing :- " + e);
+			// TODO: handle exception
+		}
+		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
+	}
+
+	@POST
+	@Path("/veruifySubscriptionContractbySP")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response veruifySubscriptionContractbySP(InputStream incomingData) {
 		StringBuilder tpayStringBuilder = new StringBuilder();
 		try {
 			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
@@ -55,49 +98,8 @@ public class Subscription_services {
 		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
 	}
 	
-	
 	@POST
-	@Path("/recurringSubscritionContractbySP")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response recurringSubscritionContractbySP(InputStream incomingData) {
-		StringBuilder tpayStringBuilder = new StringBuilder();
-		try {
-			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
-			String line = null;
-			while ((line = in.readLine()) != null) {
-				tpayStringBuilder.append(line);
-			}
-			
-//			System.out.println(tpayStringBuilder);
-		} catch (Exception e) {
-			System.out.println("Error parsing :- " + e);
-			// TODO: handle exception
-		}		
-		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
-	}
-	
-	@POST
-	@Path("/veruifySubscritionContractbySP")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response veruifySubscritionContractbySP(InputStream incomingData) {
-		StringBuilder tpayStringBuilder = new StringBuilder();
-		try {
-			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
-			String line = null;
-			while ((line = in.readLine()) != null) {
-				tpayStringBuilder.append(line);
-			}
-			
-//			System.out.println(tpayStringBuilder);
-		} catch (Exception e) {
-			System.out.println("Error parsing :- " + e);
-			// TODO: handle exception
-		}		
-		return  Response.status(200).entity(tpayStringBuilder.toString()).build();
-	}
-	
-	@POST
-	@Path("/reserVerificationPin")
+	@Path("/resedVerificationPin")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response reserVerificationPin(InputStream incomingData) {
 		StringBuilder tpayStringBuilder = new StringBuilder();
