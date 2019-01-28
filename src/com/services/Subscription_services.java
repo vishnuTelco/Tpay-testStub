@@ -24,12 +24,15 @@ public class Subscription_services {
 		try {
 			BufferedReader in  = new BufferedReader(new InputStreamReader(incomingData));
 			String line = null;
-			while ((line = in.readLine()) != null) {
+//			while ((line = in.readLine()) != null) {
+//				tpayStringBuilder.append(response);
+//			}
+			    Thread.sleep(1000); 
 				tpayStringBuilder.append(response);
-			}
-
+				 		
 //			System.out.println(tpayStringBuilder);
 		} catch (Exception e) {
+			tpayStringBuilder.append(response);
 			System.out.println("Error parsing :- " + e);
 			// TODO: handle exception
 		}
