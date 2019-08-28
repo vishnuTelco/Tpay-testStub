@@ -60,13 +60,12 @@ public class productSercices extends common {
 			} else {
 				respose = "{\n" + "  \"AddProductResult\": {\n" + "    \"SKU\": \"" + jsonNode.get("sku").asText()
 						+ "\",\n" + "    \"isEnabled\": true,\n" + "    \"nameAr\": \"product name in arabic\",\n"
-						+ "    \"price\": 0,\n" + "    \"pricings\": [\n" + "      {\n"
-						+ "        \"catalogId\": 95381,\n" + "        \"price\": 9.9\n" + "      },\n" + "      {\n"
-						+ "        \"catalogId\": 95382,\n" + "        \"price\": 15\n" + "      },\n" + "      {\n"
-						+ "        \"catalogId\": 95383,\n" + "        \"price\": 1\n" + "      }\n" + "    ],\n"
+						+ "    \"pricings\": [\n" + jsonNode.get("pricings") + "]\n"
 						+ "    \"productId\":\"123456789987654321\",\n" + "    \"productName\": \""
 						+ jsonNode.get("name").asText() + "\"\n" + "  }\n" + "}";
 				status = 201;
+				return Response.status(status).header("Content-Type", MediaType.APPLICATION_JSON).entity(respose)
+						.build();
 			}
 
 		} catch (Exception e) {
