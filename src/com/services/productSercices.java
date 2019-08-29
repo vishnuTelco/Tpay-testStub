@@ -61,23 +61,20 @@ public class productSercices extends common {
 				
 				respose = "{\n" + 
 						"   \"AddProductResult\":{\n" + 
-						"      \"SKU\":\"" + jsonNode.get("sku").asText() + "\",\n" +
-						"      \"isEnabled\":" + jsonNode.get("isEnabled") + ",\n"
-						+ 
+						"      \"SKU\":\"1234567\",\n" + 
+						"      \"isEnabled\":true,\n" + 
 						"      \"nameAr\":\"product name in arabic\",\n" + 
-						"      \"price\":0,\n" + 
 						"      \"pricings\":[\n" + 
 						"         {\n" + 
-						"            \"catalogId\":" + jsonNode.get("pricings").get(0).get("catalogId").asText() + ",\n"
-						+ 
-						"            \"price\":" + jsonNode.get("pricings").get(0).get("price").asText() + "\n" +
-						"         }\n" +
-
+						"            \"catalogId\":\"1567070022365\",\n" + 
+						"            \"price\":5\n" + 
+						"         }\n" + 
 						"      ],\n" + 
-						"      \"productId\":" + System.currentTimeMillis() + ",\n" + 
-						"      \"productName\":\"" + jsonNode.get("name").asText() + "\"\n" + 
+						"      \"productId\":\"6624265\",\n" + 
+						"      \"productName\":\"san_product2\"\n" + 
 						"   }\n" + 
-						"}";
+						"}\n" + 
+						" ";
 				status = 201;
 				return Response.status(status).header("Content-Type", MediaType.APPLICATION_JSON)
 						.entity(respose.toString())
