@@ -80,7 +80,7 @@ public class productSercices extends common {
 						"         }\n" + 
 						"      ],\n" + 
 						"      \"productId\":104938,\n" + 
-						"      \"productName\":\"" + jsonNode.get("productName").asText() + "\"\n" + 
+						"      \"productName\":\"" + jsonNode.get("name").asText() + "\"\n" + 
 						"   }\n" + 
 						"}";
 				status = 201;
