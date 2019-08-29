@@ -87,9 +87,9 @@ public class productSercices extends common {
 						"      \"nameAr\":\"product name in arabic\",\n" + 
 						"      \"pricings\":[\n" + 
 						"         {\n" + 
-						"            \"catalogId\":1567070022365,\n" + "            \"price\":5\n" + "         }\n" +
+						"            \"catalogId\":15665,\n" + "            \"price\":5\n" + "         }\n" +
 						"      ],\n" + 
-						"      \"productId\":6624265,\n" + "      \"productName\":\"san_product2\"\n" +
+						"      \"productId\":66324,\n" + "      \"productName\":\"san_product2\"\n" +
 						"   }\n" + 
 						"}";
 				status = 201;
