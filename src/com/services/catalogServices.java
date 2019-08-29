@@ -3,6 +3,7 @@ package com.services;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Path("/catalog/")
 public class catalogServices extends common {
 	final static Logger logger = Logger.getLogger(catalogServices.class);
+	Random rand = new Random();
 
 	@POST
 	@Path("/creatCatalog")
@@ -49,7 +51,7 @@ public class catalogServices extends common {
 				respose = "{\n" + 
 						"  \"AddProductCatalogResult\": {\n" + 
 						"    \"catalogDescription\": \"" + jsonNode.get("name").asText()+ "/API Gate/Orange-EGY/DirectBilling\",\n" + 
-						"    \"catalogId\": " + System.currentTimeMillis() + ",\n"	+ 
+						"    \"catalogId\": " + rand.nextInt(99999) + ",\n" + 
 						"    \"catalogName\": \""+jsonNode.get("name").asText()+"\",\n" + 
 						"    \"isEnabled\": true,\n" + 
 						"    \"salesChannelId\": 36230\n" + 

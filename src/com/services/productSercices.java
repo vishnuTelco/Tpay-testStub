@@ -3,6 +3,7 @@ package com.services;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Path("/products/")
 public class productSercices extends common {
 	final static Logger logger = Logger.getLogger(catalogServices.class);
+	Random rand = new Random();
 
 	@POST
 	@Path("/createProduct")
@@ -59,39 +61,20 @@ public class productSercices extends common {
 						.build();
 			} else {
 				
-//				respose = "{\n" + 
-//						"   \"AddProductResult\":{\n" + 
-//						"      \"SKU\":\"" + jsonNode.get("sku").asText() + "\",\n" +
-//						"      \"isEnabled\":" + jsonNode.get("isEnabled") + ",\n"
-//						+ 
-//						"      \"nameAr\":\"product name in arabic\",\n" + 
-//						"      \"price\":0,\n" + 
-//						"      \"pricings\":[\n" + 
-//						"         {\n" + 
-//						"            \"catalogId\":" + jsonNode.get("pricings").get(0).get("catalogId").asText() + ",\n"
-//						+ 
-//						"            \"price\":" + jsonNode.get("pricings").get(0).get("price").asText() + "\n" +
-//						"         },\n" + 
-//						"         {\n" + "            \"catalogId\":"
-//						+ jsonNode.get("pricings").get(1).get("catalogId").asText() + ",\n" + "            \"price\":"
-//						+ jsonNode.get("pricings").get(1).get("price").asText() + "\n" + "         }\n" + 
-//						"      ],\n" + 
-//						"      \"productId\":" + System.currentTimeMillis() + ",\n" + 
-//						"      \"productName\":\"" + jsonNode.get("name").asText() + "\"\n" + 
-//						"   }\n" + 
-//						"}";
-
 				respose = "{\n" + 
 						"   \"AddProductResult\":{\n" + 
-						"      \"SKU\":\"1234567\",\n" + "      \"isEnabled\":true,\n" +
+						"      \"SKU\":\"" + jsonNode.get("sku").asText() + "\",\n" +
+						"      \"isEnabled\":" + jsonNode.get("isEnabled") + ",\n"
+						+ 
 						"      \"nameAr\":\"product name in arabic\",\n" + 
-						"      \"pricings\":[\n" + 
-						"         {\n" + 
-						"            \"catalogId\":15665,\n" + "            \"price\":5\n" + "         }\n" +
-						"      ],\n" + 
-						"      \"productId\":66324,\n" + "      \"productName\":\"san_product2\"\n" +
+						"      \"price\":0,\n" + 
+						"      \"pricings\":\n" + jsonNode.get("pricings") + " ,\n" + 
+						"      \"productId\":" + rand.nextInt(99999) + ",\n" + 
+						"      \"productName\":\"" + jsonNode.get("name").asText() + "\"\n" + 
 						"   }\n" + 
 						"}";
+
+
 				status = 201;
 				return Response.status(status).header("Content-Type", MediaType.APPLICATION_JSON)
 						.entity(respose.toString())
