@@ -71,15 +71,10 @@ public class productSercices extends common {
 						"            \"catalogId\":" + jsonNode.get("pricings").get(0).get("catalogId").asText() + ",\n"
 						+ 
 						"            \"price\":" + jsonNode.get("pricings").get(0).get("price").asText() + "\n" +
-						"         },\n" + 
-						"         {\n" + 
-						"            \"catalogId\":" + jsonNode.get("pricings").get(1).get("catalogId").asText() + ",\n"
-						+ 
-						"            \"price\":" + jsonNode.get("pricings").get(1).get("price").asText() + "\n"
-						+ 
-						"         }\n" + 
+						"         }\n" +
+
 						"      ],\n" + 
-						"      \"productId\":104938,\n" + 
+						"      \"productId\":" + System.currentTimeMillis() + ",\n" + 
 						"      \"productName\":\"" + jsonNode.get("name").asText() + "\"\n" + 
 						"   }\n" + 
 						"}";
