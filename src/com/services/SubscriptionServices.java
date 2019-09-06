@@ -73,9 +73,19 @@ public class SubscriptionServices extends common {
 	public Response veruifySubscriptionContractbySP(InputStream incomingData) {
 		String respose = "";
 		int status = 200;
+		StringBuilder tpayStringBuilder = new StringBuilder();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = null;
 		try {
-
-			respose = "{\"operationStatusCode\":0,\"subscriptionContractId\":537020,\"errorMessage\":null,\"responseCode\":0,\"paymentStatus\":10}";
+			BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				tpayStringBuilder.append(line);
+			}
+			jsonNode = objectMapper.readTree(tpayStringBuilder.toString());
+			respose = "{\"operationStatusCode\":0,\"subscriptionContractId\":"
+					+ jsonNode.get("subscriptionContractId").asText()
+					+ ",\"errorMessage\":null,\"responseCode\":0,\"paymentStatus\":10}";
 
 		} catch (Exception e) {
 			System.out.println("Error parsing :- " + e);
@@ -90,9 +100,19 @@ public class SubscriptionServices extends common {
 	public Response reserVerificationPin(InputStream incomingData) {
 		String respose = "";
 		int status = 0;
+		StringBuilder tpayStringBuilder = new StringBuilder();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = null;
 		try {
-
-			respose = "{\"operationStatusCode\":0,\"subscriptionContractId\":0,\"errorMessage\":null,\"responseCode\":0,\"paymentStatus\":null}";
+			BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				tpayStringBuilder.append(line);
+			}
+			jsonNode = objectMapper.readTree(tpayStringBuilder.toString());
+			respose = "{\"operationStatusCode\":0,\"subscriptionContractId\":"
+					+ jsonNode.get("subscriptionContractId").asText()
+					+ ",\"errorMessage\":null,\"responseCode\":0,\"paymentStatus\":null}";
 			status = 200;
 
 		} catch (Exception e) {
@@ -108,7 +128,16 @@ public class SubscriptionServices extends common {
 	public Response confirmRecurringPaymentTriggeredbySP(InputStream incomingData) {
 		String respose = "";
 		int status = 0;
+		StringBuilder tpayStringBuilder = new StringBuilder();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = null;
 		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				tpayStringBuilder.append(line);
+			}
+			jsonNode = objectMapper.readTree(tpayStringBuilder.toString());
 
 			respose = "{\n" + "   \"amountTransaction\":{\n" + "      \"clientCorrelator\":\"55555\",\n"
 					+ "      \"serverReferenceCode\":\"src-32\",\n" + "      \"paymentAmount\":{\n"
@@ -124,8 +153,10 @@ public class SubscriptionServices extends common {
 					+ "      \"notifyURL\":\"http://localhost:8080/apigateapiserver/callback.jsp\",\n"
 					+ "      \"resourceURL\":\"http://example.com/tpaypayment/v1/tel%3A%2B94775566288/transactions/amount/340510\",\n"
 					+ "      \"transactionOperationStatus\":\"Charged\"\n" + "   },\n" + "   \"chargetype\":\"rew\",\n"
-					+ "   \"subscriptionContractId\":340510,\n" + "   \"productCatalogName\":\"GamesZone\",\n"
-					+ "   \"transactionId\":7451235\n" + "}";
+					+ "   \"subscriptionContractId\":" + jsonNode.get("transactionId").asText() + ",\n"
+					+ "   \"productCatalogName\":\" " + jsonNode.get("productCatalogName").asText() + "\",\n"
+					+ "   \"transactionId\":"
+					+ jsonNode.get("transactionId").asText() + "\n" + "}";
 			status = 200;
 
 		} catch (Exception e) {
